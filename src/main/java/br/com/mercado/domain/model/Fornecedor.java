@@ -1,10 +1,15 @@
 package br.com.mercado.domain.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
+
 import java.util.List;
 
 @Entity
 @Table(name = "fornecedores")
+@Builder
+@Data
 public class Fornecedor {
 
     @Id

@@ -1,10 +1,15 @@
 package br.com.mercado.domain.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
+
 import java.util.List;
 
 @Entity
 @Table(name = "mercados")
+@Builder
+@Data
 public class Mercado {
 
     @Id
@@ -20,6 +25,5 @@ public class Mercado {
     @OneToMany(mappedBy = "mercado", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Funcionario> funcionarios;
 
-    // Getters e Setters
 }
 

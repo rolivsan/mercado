@@ -1,9 +1,13 @@
 package br.com.mercado.domain.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
 
 @Entity
 @Table(name = "funcionarios")
+@Builder
+@Data
 public class Funcionario {
 
     @Id
