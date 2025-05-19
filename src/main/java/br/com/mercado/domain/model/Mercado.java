@@ -1,15 +1,18 @@
 package br.com.mercado.domain.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name = "mercados")
 @Builder
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Mercado {
 
     @Id
@@ -18,6 +21,7 @@ public class Mercado {
 
     private String nome;
     private String endereco;
+    private String cnpj;
 
     @OneToMany(mappedBy = "mercado", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Fornecedor> fornecedores;

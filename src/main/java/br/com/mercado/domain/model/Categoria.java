@@ -1,5 +1,6 @@
 package br.com.mercado.domain.model;
 
+import br.com.mercado.domain.model.Produto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
