@@ -1,11 +1,12 @@
 package br.com.mercado.domain.controller;
 
+import br.com.mercado.domain.dto.request.ProdutoRequest;
+import br.com.mercado.domain.dto.response.ProdutoResponse;
 import br.com.mercado.domain.model.Produto;
 import br.com.mercado.domain.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +22,13 @@ public class ProdutoController {
     }
 
     //TODO Create
+
+    @PostMapping
+    ResponseEntity<ProdutoResponse> create(@RequestBody ProdutoRequest produtoRequest) throws Exception {
+        ProdutoResponse produtoResponse = produtoService.create(produtoRequest);
+        return ResponseEntity.status(201).body(produtoResponse);
+    }
+
 
     //TODO Read
 

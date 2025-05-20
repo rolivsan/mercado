@@ -1,5 +1,7 @@
 package br.com.mercado.domain.service;
 
+import br.com.mercado.domain.dto.request.FornecedorRequest;
+import br.com.mercado.domain.dto.response.FornecedorResponse;
 import br.com.mercado.domain.model.Categoria;
 import br.com.mercado.domain.model.Fornecedor;
 import br.com.mercado.domain.model.Produto;
@@ -17,5 +19,8 @@ public class FornecedorService {
 
     public List<Fornecedor> getAll() {
         return fornecedorUseCase.getAll();
+    }
+    public FornecedorResponse create(FornecedorRequest fornecedorRequest) throws Exception {
+        return fornecedorUseCase.create(fornecedorRequest);
     }
 }

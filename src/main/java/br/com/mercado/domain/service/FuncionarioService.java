@@ -1,5 +1,7 @@
 package br.com.mercado.domain.service;
 
+import br.com.mercado.domain.dto.request.FuncionarioRequest;
+import br.com.mercado.domain.dto.response.FuncionarioResponse;
 import br.com.mercado.domain.model.Categoria;
 import br.com.mercado.domain.model.Funcionario;
 import br.com.mercado.domain.useCase.CategoriaUseCase;
@@ -16,5 +18,9 @@ public class FuncionarioService {
 
     public List<Funcionario> getAll() {
         return funcionarioUseCase.getAll();
+    }
+
+    public FuncionarioResponse create(FuncionarioRequest funcionarioRequest) throws Exception {
+        return funcionarioUseCase.create(funcionarioRequest);
     }
 }

@@ -1,5 +1,6 @@
 package br.com.mercado.domain.service;
 
+import br.com.mercado.domain.dto.request.ProdutoRequest;
 import br.com.mercado.domain.model.Produto;
 import br.com.mercado.domain.useCase.PrdutoUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,5 +15,8 @@ public class ProdutoService {
 
     public List<Produto> getAll() {
         return produtoUseCase.getAll();
+    }
+    public Produto create(ProdutoRequest produtoRequest) throws Exception {
+        return produtoUseCase.create(produtoRequest);
     }
 }
