@@ -17,6 +17,7 @@ public class Funcionario {
     private String nome;
     private String cargo;
     private Double salario;
+    private String cpf;
 
     @ManyToOne
     @JoinColumn(name = "mercado_id", nullable = false)

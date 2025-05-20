@@ -1,5 +1,8 @@
 package br.com.mercado.domain.useCase;
 
+import br.com.mercado.domain.dto.request.FornecedorRequest;
+import br.com.mercado.domain.dto.response.FornecedorResponse;
+import br.com.mercado.domain.mapper.FornecedorMapper;
 import br.com.mercado.domain.model.Categoria;
 import br.com.mercado.domain.model.Fornecedor;
 import br.com.mercado.domain.model.Funcionario;
@@ -18,5 +21,19 @@ public class FornecedorUseCase {
     FornecedorRepository fornecedorRepository;
 
     public List<Fornecedor> getAll() {
-        return fornecedorRepository.findAll();}
+        return fornecedorRepository.findAll();
+    }
+
+    public FornecedorResponse create(FornecedorRequest fornecedorRequest) throws Exception {
+        for (Fornecedor forn : fornecedorRepository.findAll()) {
+            if (forn.getNome().equalsIgnoreCase(fornecedorRequest.getNome())) {
+                throw new Exception("fornecedor ja existe");
+            }
+        }
+        Fornecedor fornecedor = FornecedorMapper.toEntity(fornecedorRequest);
+
+        Fornecedor fornecedorSaved = fornecedorRepository.save(fornecedor);
+
+        return FornecedorMapper.toResponse(fornecedorSaved);
+    }
 }
