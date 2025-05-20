@@ -26,7 +26,7 @@ public class FornecedorUseCase {
 
     public FornecedorResponse create(FornecedorRequest fornecedorRequest) throws Exception {
         for (Fornecedor forn : fornecedorRepository.findAll()) {
-            if (forn.getNome().equalsIgnoreCase(fornecedorRequest.getNome())) {
+            if (forn.getCnpj().equalsIgnoreCase(fornecedorRequest.getCnpj())) {
                 throw new Exception("fornecedor ja existe");
             }
         }

@@ -21,7 +21,7 @@ public class CategoriaService {
         return categoriaUseCase.getAll();
     }
 
-    public CategoriaResponse create(CategoriaRequest categoriaRequest) throws Exception {
+    public CategoriaResponse create(CategoriaRequest categoriaRequest){
         return categoriaUseCase.create(categoriaRequest);
     }
 }

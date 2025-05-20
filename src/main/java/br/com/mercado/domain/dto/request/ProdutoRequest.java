@@ -7,5 +7,6 @@ import lombok.Data;
 @Builder
 public class ProdutoRequest {
     private String nome;
+    private String marca;
 
 }

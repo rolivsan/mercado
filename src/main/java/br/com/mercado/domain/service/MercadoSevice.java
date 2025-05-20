@@ -17,7 +17,7 @@ public class MercadoSevice {
         return mercadoUseCase.getAll();
     }
 
-    public void create(MercadoRequest mercadoRequest) {
+    public void create(MercadoRequest mercadoRequest) throws Exception{
         mercadoUseCase.create(mercadoRequest);
     }
 }

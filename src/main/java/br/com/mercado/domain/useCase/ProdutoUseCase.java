@@ -21,7 +21,8 @@ public class ProdutoUseCase {
 
     public ProdutoResponse create(ProdutoRequest produtoRequest) throws Exception {
         for (Produto prodt: produtoRepository.findAll()){
-            if (prodt.getNome().equals(produtoRequest.getNome())){
+            //TODO elaine fazer o findByNomeAndMarca retornando o optional e melhorar as outras querys que existem
+            if (prodt.getNome().equals(produtoRequest.getNome()) && prodt.getMarca().equals(produtoRequest.getMarca())){
                 throw new Exception("Produto já cadastrado");
             }
         }

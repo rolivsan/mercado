@@ -25,7 +25,7 @@ public class CategoriaController {
         }
 
         @PostMapping
-        ResponseEntity<CategoriaResponse> create(@RequestBody CategoriaRequest categoriaRequest) throws Exception {
+        ResponseEntity<CategoriaResponse> create(@RequestBody CategoriaRequest categoriaRequest){
                 CategoriaResponse categoriaResponse = categoriaService.create(categoriaRequest);
                 return ResponseEntity.status(201).body(categoriaResponse);
         }

@@ -22,7 +22,7 @@ public class MercadoController {
     }
 
     @PostMapping
-    ResponseEntity<Void> create(@RequestBody MercadoRequest mercadoRequest){
+    ResponseEntity<Void> create(@RequestBody MercadoRequest mercadoRequest) throws Exception{
         mercadoSevice.create(mercadoRequest);
         return ResponseEntity.status(201).body(null);
     }

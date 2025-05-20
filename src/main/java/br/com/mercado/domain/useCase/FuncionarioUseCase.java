@@ -19,8 +19,7 @@ public class FuncionarioUseCase {
     public FuncionarioResponse create(FuncionarioRequest funcionarioRequest) throws Exception {
         //TODO implementar a chamada por nome SELECT * FROM FUNCIONARIOS WHERE FUNCIONARIOS.NOME = 'Alberto'
         for(Funcionario func : funcionarioRepository.findAll()){
-            if(func.getNome().equalsIgnoreCase(funcionarioRequest.getNome()) &&
-                    func.getCpf().equals(funcionarioRequest.getCpf())){
+            if(func.getCpf().equalsIgnoreCase(funcionarioRequest.getCpf())) {
                 throw new Exception("funcionario ja existe");
             }
         }

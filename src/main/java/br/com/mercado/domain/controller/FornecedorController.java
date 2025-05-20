@@ -20,7 +20,6 @@ public class FornecedorController {
 
     @GetMapping
     public List<Fornecedor> getAll() {
-
         return fornecedorService.getAll();
     }
 

@@ -2,6 +2,8 @@ package br.com.mercado.domain.useCase;
 
 import br.com.mercado.domain.dto.request.CategoriaRequest;
 import br.com.mercado.domain.dto.response.CategoriaResponse;
+import br.com.mercado.domain.enums.ErrorCode;
+import br.com.mercado.domain.exception.BusinessException;
 import br.com.mercado.domain.mapper.CategoriaMapper;
 import br.com.mercado.domain.model.Categoria;
 import br.com.mercado.domain.repository.CategoriaRepository;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class CategoriaUseCase {
@@ -20,15 +23,11 @@ public class CategoriaUseCase {
         return categoriaRepository.findAll();
     }
 
-    public CategoriaResponse create(CategoriaRequest categoriaRequest) throws Exception {
-        //TODO implementar a chamada por nome SELECT * FROM CATEGORIAS WHERE CATEGORIAS.NOME = 'Alimentos'
-        for(Categoria cat : categoriaRepository.findAll()){
-            if(cat.getNome().equalsIgnoreCase(categoriaRequest.getNome())){
-                throw new Exception("categoria ja existe");
-            }
+    public CategoriaResponse create(CategoriaRequest categoriaRequest) {
+        Optional<Categoria> categoriaEncontrada = categoriaRepository.findByNome(categoriaRequest.getNome());
+        if(categoriaEncontrada.isPresent()){
+            throw  new BusinessException(ErrorCode.CATEGORIA_EXISTS);
         }
-
-        //select * from categoria where categoria.nome ="x"
 
         Categoria categoria = CategoriaMapper.toEntity(categoriaRequest);
 
