@@ -8,5 +8,5 @@ import lombok.Data;
 public class ProdutoRequest {
     private String nome;
     private String marca;
-
+    private Long idFornecedor;
 }

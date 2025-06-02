@@ -27,6 +27,12 @@ public class MercadoController {
         return ResponseEntity.status(201).body(null);
     }
 
+
+/*    @PostMapping
+    ResponseEntity<Void> associationFornecedorAndMercador
+    */
+
+
     //TODO Read
 
     //TODO Update

@@ -16,12 +16,10 @@ public class ProdutoController {
     @Autowired
     ProdutoService produtoService;
 
-    @GetMapping
+    @GetMapping("/{idMercado}/produto")
     public List<Produto> getAll() {
         return produtoService.getAll();
     }
-
-    //TODO Create
 
     @PostMapping
     ResponseEntity<ProdutoResponse> create(@RequestBody ProdutoRequest produtoRequest) throws Exception {

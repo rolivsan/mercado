@@ -3,6 +3,8 @@ package br.com.mercado.domain.enums;
 public enum ErrorCode {
 
     CATEGORIA_EXISTS("categoria ja existe"),
+    MERCADO_NOT_EXISTS("Mercado nao exite"),
+    FORNECEDOR_NOT_EXISTS("fornecedor nao existe"),
     FORNECEDOR_EXISTS("fornecedor ja existe"),
     FUNCIONARIO_EXISTS("funcionario ja existe"),
     PRODUTO_EXISTS("produto ja existe"),

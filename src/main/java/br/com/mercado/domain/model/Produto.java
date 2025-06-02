@@ -16,6 +16,7 @@ public class Produto {
     private String nome;
     private String marca;
     private Double preco;
+    private String codigoDeBarras;
 
     @ManyToOne
     @JoinColumn(name = "fornecedor_id", nullable = false)

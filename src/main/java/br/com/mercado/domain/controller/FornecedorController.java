@@ -23,7 +23,6 @@ public class FornecedorController {
         return fornecedorService.getAll();
     }
 
-    //TODO Create
     @PostMapping
     ResponseEntity<FornecedorResponse> create(@RequestBody FornecedorRequest fornecedorRequest) throws Exception {
         FornecedorResponse fornecedorResponse = fornecedorService.create(fornecedorRequest);

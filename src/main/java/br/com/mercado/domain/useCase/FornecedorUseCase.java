@@ -5,13 +5,8 @@ import br.com.mercado.domain.dto.response.FornecedorResponse;
 import br.com.mercado.domain.enums.ErrorCode;
 import br.com.mercado.domain.exception.BusinessException;
 import br.com.mercado.domain.mapper.FornecedorMapper;
-import br.com.mercado.domain.model.Categoria;
 import br.com.mercado.domain.model.Fornecedor;
-import br.com.mercado.domain.model.Funcionario;
-import br.com.mercado.domain.model.Produto;
-import br.com.mercado.domain.repository.CategoriaRepository;
 import br.com.mercado.domain.repository.FornecedorRepository;
-import br.com.mercado.domain.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -30,12 +25,11 @@ public class FornecedorUseCase {
 
     public FornecedorResponse create(FornecedorRequest fornecedorRequest){
 
-        // duvidas se a forma de busca esta correta
-        Optional<Fornecedor> fornecedorEncontrado = fornecedorRepository.findByMercadoId(
-                (fornecedorRequest.getCnpj()));
+        Optional<Fornecedor> fornecedorEncontrado = fornecedorRepository.findByCnpj(fornecedorRequest.getCnpj());
         if(fornecedorEncontrado.isPresent()){
-                throw new BusinessException(ErrorCode.FORNECEDOR_EXISTS);
+            throw new BusinessException(ErrorCode.FORNECEDOR_EXISTS);
         }
+
         Fornecedor fornecedor = FornecedorMapper.toEntity(fornecedorRequest);
 
         Fornecedor fornecedorSaved = fornecedorRepository.save(fornecedor);

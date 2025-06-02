@@ -20,6 +20,7 @@ public class FornecedorService {
     public List<Fornecedor> getAll() {
         return fornecedorUseCase.getAll();
     }
+
     public FornecedorResponse create(FornecedorRequest fornecedorRequest) throws Exception {
         return fornecedorUseCase.create(fornecedorRequest);
     }
