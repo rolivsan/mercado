@@ -26,22 +26,27 @@ public class MercadoUseCase {
 
     public List<Mercado> getAll() {
         //TODO ELAINE  - Implementar o dto para mercado retornando apenas os dados do mercado
+
         return mercadoRepository.findAll();
     }
 
     public void create(MercadoRequest mercadoRequest) throws Exception {
         //TODO ELAINE - implementar a busca por cnpj
-        for (Mercado mer : mercadoRepository.findAll()) {
-            if (mer.getCnpj().equalsIgnoreCase(mercadoRequest.getCnpj())) {
-                throw new Exception("mercado ja existe");
-            }
+        Optional<Mercado> mercadoEncontrado = mercadoRepository.findByCnpj(mercadoRequest.getCnpj());
+        if (mercadoEncontrado.isPresent()) {
+            throw new BusinessException(ErrorCode.MERCADO_EXISTS);
         }
+//        for (Mercado mer : mercadoRepository.findAll()) {
+//            if (mer.getCnpj().equalsIgnoreCase(mercadoRequest.getCnpj())) {
+//                throw new Exception("mercado ja existe");
+//            }
+//        }
 
        for(String cnpjFornecedor : mercadoRequest.getCnpjFornecedor()){
 
        }
 
-        Optional<Fornecedor> fornecedorEncontrado = fornecedorRepository.findByCnpj(mercadoRequest.getCnpjFornecedor());
+        Optional<Fornecedor> fornecedorEncontrado = fornecedorRepository.findByCnpj(mercadoRequest.getCnpjFornecedor().toString());
         if(fornecedorEncontrado.isPresent()){
             throw new BusinessException(ErrorCode.FORNECEDOR_EXISTS);
         }

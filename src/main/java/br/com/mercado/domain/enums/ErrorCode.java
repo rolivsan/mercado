@@ -4,6 +4,7 @@ public enum ErrorCode {
 
     CATEGORIA_EXISTS("categoria ja existe"),
     MERCADO_NOT_EXISTS("Mercado nao exite"),
+    MERCADO_EXISTS("Mercado ja existe"),
     FORNECEDOR_NOT_EXISTS("fornecedor nao existe"),
     FORNECEDOR_EXISTS("fornecedor ja existe"),
     FUNCIONARIO_EXISTS("funcionario ja existe"),
